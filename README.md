@@ -1,4 +1,4 @@
-# Purpose of this project
+# How to and why combine Pi-hole and WireGuard
 This project documents my Setup for [Pi-hole](https://github.com/pi-hole/) 
 * at home
 * and in the cloud to be used with [WireGuard](https://www.wireguard.com/)  
