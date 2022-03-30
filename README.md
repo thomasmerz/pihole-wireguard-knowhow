@@ -407,7 +407,7 @@ I'm running a daily cronjob to gather these stats with `padd.sh`:
 <p>&nbsp;</p>
 
 ## Usage at home <a name="usage-at-home"></a>
-Just change DNS resolver in DHCP options of your router. For example:  
+Just change DNS resolver in DHCP options of your router so that **all** devices in your home network use your Pi-hole. For example:  
 <img width="585" alt="image" src="https://user-images.githubusercontent.com/18568381/160890390-8dc7eaa2-3fea-482c-9176-909d3db163f1.png">
 
 💣 If you're a **Vodafone Customer** and if you're only using the provided Vodafone Station you will **not** be able to do this! VF Station has no option to change DNS resolvers, so go and buy a router that you own and that you can configure as you want and build up a [router cascade](https://www.heise.de/ct/artikel/Router-Kaskaden-1825801.html?view=print). 💣
