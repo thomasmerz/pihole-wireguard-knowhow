@@ -29,7 +29,7 @@ Now have a look at my Pi-hole(s):
 ---
 
 ## Why Pi-hole? <a name="why-pi-hole"></a>
-![image](https://user-images.githubusercontent.com/18568381/160894511-80cbe2ae-3006-4144-84e7-a83db6edb866.png)
+![image](https://user-images.githubusercontent.com/18568381/160894511-80cbe2ae-3006-4144-84e7-a83db6edb866.png)  
 * It started that I wanted no or at least less **advertisments**, because it's annoying and because it disrupts the flow of reading, it uses not a little bandwidth but more than you think (for what you don't want or what is of no interest to you when surfing on a website, for example news pages) and it slows down the loading of much websites due to loading lots of ads and images and videos. If you don't download all this unneccessary stuff, you save on your mobile plan and profit from faster page loading 👍  
 * Then I wanted more **Privacy**, which means no or at least less **Tracking**, which means no or at least less **Surveillance**!  
 * I'm a dad of three kids and I don't want them consuming too much **Social Media** or sometimes no Social Media at all! With Pi-hole it's totally easy to block Facebook or Instagram for example.  
@@ -38,15 +38,16 @@ Now have a look at my Pi-hole(s):
 * And finally when they get older: **Youth protection** becomes a big issue! 🔞  
 
 🥅 The MAIN GOAL for me is to block ads, tracker, malware, ... (everything that **harms PRIVACY or DATA INTEGRITY** or is just ANNOYING us)  
-🥅 And the SECONDARY GOAL is to block stuff, that is USED WAY TOO MUCH BY THE KIDS... or what is NOT SUITABLE for this age group.
+🥅 And the SECONDARY GOAL is to block stuff, that is USED WAY TOO MUCH BY THE KIDS... or what is NOT SUITABLE for this age group.  
 
 💡 **Conclusion: Pi-hole can save you from "too curious" corporates (Facebook, Google, Amazon, Apple, Microsoft - just to name some) and can save young people from adult content.** 💡 
 
 ## Why WireGuard? <a name="why-wireguard"></a>
-<img width="775" alt="image" src="https://user-images.githubusercontent.com/18568381/160894411-a0bbb699-adfa-4e4f-afa0-be1eecb3a79c.png">
-WireGuard **tunnels all traffic from my mobile device(s) when leaving my "home-zone"** to use my Pi-hole that isn't exposed on the internet because I **don't want to run a public DNS resolver** by forwarding ports from WAN interface to my computer where Pi-hole is running.
+<img width="775" alt="image" src="https://user-images.githubusercontent.com/18568381/160894411-a0bbb699-adfa-4e4f-afa0-be1eecb3a79c.png">  
+WireGuard **tunnels all traffic from my mobile device(s) when leaving my home** to use my Pi-hole that isn't exposed on the internet because I **don't want to run a public DNS resolver** by forwarding ports from WAN interface to my computer where Pi-hole is running.  
 
-💡  **Conclusion: WireGuard can save you from "too curious" ISPs at home, mobile providers or (free) VPN providers - but now you still have to trust your cloudserver provider! This is still not 100 percent safe from state authorities or from intelligence services!** 💡 This german [Howto](https://www.kuketz-blog.de/howto-internet-zensur-umgehen-und-anonym-bleiben/) about "Avoiding Internet-censorship and stay anonym" gives some interesting details and thoughts.
+💡  **Conclusion: WireGuard can save you from "too curious" ISPs at home, mobile providers or (free) VPN providers - but now you still have to trust your cloudserver provider! This is still not 100 percent safe from state authorities or from intelligence services!** 💡  
+This german [Howto](https://www.kuketz-blog.de/howto-internet-zensur-umgehen-und-anonym-bleiben/) about "Avoiding Internet-censorship and stay anonym" gives some interesting details and thoughts.
 
 Finally the **combination of Pi-hole and WireGuard** (also known as [WireHole](https://github.com/IAmStoxe/wirehole) - but I like both projects being separated for reasons of nicer and easier updates which I will explain later) gives you the **ability to access your private Pi-hole an all your devices at any place/network any time** 👍
 
@@ -66,7 +67,7 @@ BTW: I use `docker-compose` and not native `docker` because I use it already for
 ⚠️ I will not explain and repeat how to install a basic setup - please refer to the links above. ⚠️  
 ⚠️ Don't forget to change DNS resolver in your routers DHCP options - please refer to your router's documentation how to do this! ⚠️
 
-Keep in mind to set **Permit all origins** in Web-GUI ("Settings" > "DNS") for your** Pi-hole at home** so that all clients can use it!  
+Keep in mind to set **Permit all origins** in Web-GUI ("Settings" > "DNS") for your **Pi-hole at home** so that all clients can use it!  
 <img width="480" alt="image" src="https://user-images.githubusercontent.com/18568381/160889180-29240833-029b-4ac4-9cb3-32bb2e96d9d6.png">
 
 Keep in mind to set **Allow only local requests** for your **Pi-hole on your cloudserver** if you won't become a public DNS resolver! 💣  
@@ -146,26 +147,24 @@ I'm using only **static IP adresses** in my home-network because this is essenti
 
 ⚠️ Please refer to your router's documentation how to setup "static DHCP" addresses! ⚠️
 
-If you are experiencing false positives for blocked domains, you can open an issue at the blocklist owner's repository on GitHub - and you can (temporarilly) **whitelist** it in "Group Management" > "Domains". There you can also **blacklist** some domains or even top-level-domains with an regular expression.  
-I'm blacklisting `(\.cn$|\.ru$|\.su$|\.vn$|\.top$)` because currently I don't know a reason why to surf to these top-level-domains (despite I can't read mandarin, russian or vietnamese 😉).  
-I'm also blacklisting:
+If you are experiencing **false positives for some domains**, you can open an issue at the blocklist owner's repository on GitHub - and you can (temporarilly) **whitelist** it in "Group Management" > "Domains". There you can also **blacklist** some domains or even top-level-domains with an regular expression.  
+I'm blacklisting `(\.cn$|\.ru$|\.su$|\.vn$|\.top$)` because currently I don't know a reason why to surf to these top-level-domains (despite I can't read mandarin, russian or vietnamese 😉). I'm also blacklisting:
 * `(^|\.)xn--.*$` which blocks all domains with german "Umlauten" like "äöü" because they're mostly used for phishing
-* `graph.facebook.com` for tracking by Facebook on non-facebook sites (none of my many blocklist does block this! but `graph.instagram.com` is already blocked by some blocklists. Check this out by `docker exec -it pihole pihole -q graph.instagram.com`).
+* `graph.facebook.com` for tracking by Facebook on non-facebook sites (none of my many blocklist does block this! but `graph.instagram.com` is already blocked by some blocklists. Check this out by `docker exec -it pihole pihole -q graph.instagram.com`). Some more details can be found [here](https://forum.kuketz-blog.de/viewtopic.php?t=552) in the german "Kuketz-Forum".
 * `(\.casino$|\.bet$|\.poker$)` because I don't like online-gambling
-* `(^|.+\.|.+)app-measurement\.com(.+|$)` is one of my absolute "top blocked domains". This domain is already in many blocklists, but due to some developer's error there are also many invalid queries for 'https://app-measurement.com/sdk-exp' which I want to block with this reg-ex. This domain is widely used by many, many smartphone apps because they use a shitty SDK and would be absolutely tracking-free by the developers of the app
+* `(^|.+\.|.+)app-measurement\.com(.+|$)` is one of my absolute "top blocked domains". This domain is already in many blocklists, but due to some developer's error there are also many invalid queries for 'https://app-measurement.com/sdk-exp' which I want to block with this reg-ex. This domain is widely used by many, many smartphone apps because they use a shitty SDK and would be absolutely tracking-free by the developers of the app if they wouldn't use this SDK 😞
 
 ## Some tools for Pi-hole <a name="tools"></a>
 ### [PADD](https://github.com/pi-hole/PADD)
 > PADD provides in-depth information about your Pi-hole.
 
-I also use it as a systemd-service on tty12 in addition to `pihole-live-output.service` on tty11 that can easily be selfmade from Pi-hole itself:
+I can also be used as a systemd-service on tty11 in addition to `pihole-live-output.service` on tty10 that can easily be implemented:
 
 **pihole-padd.service**  
 <img width="768" alt="image" src="https://user-images.githubusercontent.com/18568381/160881402-ddbc7588-1ed2-4a60-8043-81ca37c9221e.png">
 
 **pihole-live-output.service**  
 <img width="961" alt="image" src="https://user-images.githubusercontent.com/18568381/160881744-7235c698-b50a-462c-876b-62ace72e0505.png">
-
 
 📝 Just add these lines in your `/etc/systemd/system/pihole-padd.service` and do a `systemctl daemon-reload` and a `systemctl start pihole-padd.service`:
 ```
@@ -235,7 +234,7 @@ Now you can switch to your tty10 and tty11 console to view Pi-hole's query log o
 
 Use this if you want to find out **which DNS resolver will be the fastest and most reliable for you**. I run it closest to a user experience via WiFi because most devices today are connected via WiFi and not via LAN. Think of smartphones and tablets! After some time (a day, a week; what you expect as "reliable") there's some data on a 5 minute base available and by interpreting the generated charts you should have more than just a clue which DNS resolvers from the ones you monitored are the fastest and most reliable for your internet connection at home 👍
 
-⚠️ Please have a look at the README what to check how to set up this nice tool. ⚠️
+⚠️ Please have a look at the [README](https://github.com/thomasmerz/dnspingtest_rrd/README.md) to check and how to set up this nice tool for your needings. ⚠️
 
 ## Tweaks <a name="tweaks"></a>
 ### Reduce top lists from useless information
@@ -243,10 +242,10 @@ If you find your "top" lists on the dashboard of the Web-GUI not suitable for th
 
 ```
 *.aaplimg.com
-*.amazonaws.com
 *.akadns.net
 *.akamai.net
 *.akamaiedge.net
+*.amazonaws.com
 *.apple-dns.net
 *.apple.com
 *.atomile.com
@@ -280,8 +279,10 @@ If you find your "top" lists on the dashboard of the Web-GUI not suitable for th
 *.syncthing.net
 *.teams-msgapi.trafficmanager.net
 api.mobile.immobilienscout24.de
-apple.com
 apple-finance.query.yahoo.com
+apple.com
+arpa
+com
 de
 detectportal.firefox.com
 dmdrogeriemarkt.jamfcloud.com
@@ -294,21 +295,19 @@ gitlab.com
 hc-ping.com
 imap.strato.de
 internetcheck.fing.com
+io
 ipv4only.arpa
 mugshot0.assets-yammer.com
+net
 org
 push.services.mozilla.com
 receiver.yamalytics.yammer.com
 safebrowsing.googleapis.com
 www.comdirect.de
 www.yammer.com
-com
-io
-net
-arpa
 ```
 
-And `pi.hole` itself does a lot of DNS queries as a client with types DS and DNSKEY which are technically absolutely neccessary for DNSSEC; but this information is absolutely worthless for me 😜
+And `pi.hole` itself does a lot of DNS queries as a client with types [DS and DNSKEY](https://en.wikipedia.org/wiki/List_of_DNS_record_types) which are technically absolutely neccessary for [DNSSEC](https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions); but this information (how much queries) is absolutely worthless for me 😜
 
 ### Keep database "small" / disable DoH and Apple's iCloud Private Relay / reduce queries
 I've added these lines in my `etc-pihole/pihole-FTL.conf`. Read the comments/links to understand:
@@ -376,7 +375,7 @@ min-cache-ttl=3600
 ```
 
 ### Reduce also blocked queries
-In conjunction with `BLOCK_TTL=300` (blocked domains will be cached on client side for 5 minutes instead of 2 seconds!) this drasically reduces the amount of queries and of the blocked-domain-ratio!  
+In conjunction with `BLOCK_TTL=300` (blocked domains will be cached on client side for 5 minutes instead of 2 seconds!) this **drasically reduces the amount of queries and of the blocked-domain-ratio**!  
 In my case this reduced daily queries from around usually 80.000/100.000 to 40.000/50.000 and block-ratio dropped from 30-40% down to 15-20%  
 
 I'm running a daily cronjob to gather these stats with `padd.sh`:
@@ -389,7 +388,7 @@ I'm running a daily cronjob to gather these stats with `padd.sh`:
 Just change DNS resolver in DHCP options of your router. For example:  
 <img width="585" alt="image" src="https://user-images.githubusercontent.com/18568381/160890390-8dc7eaa2-3fea-482c-9176-909d3db163f1.png">
 
-If you're a **Vodafone Customer** and if you're only using the provided Vodafone Station you will **not** be able to do this! VF Station has no option to change DNS resolvers, so go and buy a router that you own and that you can configure as you want and build up a [router cascade](https://www.heise.de/ct/artikel/Router-Kaskaden-1825801.html?view=print).
+💣 If you're a **Vodafone Customer** and if you're only using the provided Vodafone Station you will **not** be able to do this! VF Station has no option to change DNS resolvers, so go and buy a router that you own and that you can configure as you want and build up a [router cascade](https://www.heise.de/ct/artikel/Router-Kaskaden-1825801.html?view=print). 💣
 
 ## Usage in foreign networks ("free" WiFi / Hotspots and mobile data (4G/5G)) <a name="usage-on-the-road"></a>
 Go and download **WireGuard** app for your device:  
