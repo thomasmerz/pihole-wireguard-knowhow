@@ -19,19 +19,25 @@ Now have a look at my Pi-hole(s):
 <p>&nbsp;</p>
 
 # Table of contents
-1. [Why Pi-hole?](#why-pi-hole)
-2. [Why WireGuard?](#why-wireguard)
-3. [Setup and Installation](#setup-installation)
-4. [Blocklists and consolidation / deduplication](#blacklists)
-5. [General Infos regarding your Pi-hole and network setup](#general-infos)
-6. [Some tools for Pi-hole](#tools)
-7. [Tweaks](#tweaks)
-8. [Usage at home](#usage-at-home)
-9. [Usage in foreign networks ("free" WiFi / Hotspots and mobile data (4G/5G))](#usage-on-the-road)
+1. [Prerequisites](#prerequisites)
+2. [Why Pi-hole?](#why-pi-hole)
+3. [Why WireGuard?](#why-wireguard)
+4. [Setup and Installation](#setup-installation)
+5. [Blocklists and consolidation / deduplication](#blacklists)
+6. [General Infos regarding your Pi-hole and network setup](#general-infos)
+7. [Some tools for Pi-hole](#tools)
+8. [Tweaks](#tweaks)
+9. [Usage at home](#usage-at-home)
+10. [Usage in foreign networks ("free" WiFi / Hotspots and mobile data (4G/5G))](#usage-on-the-road)
 
 <p>&nbsp;</p>
 
 ---
+
+<p>&nbsp;</p>
+
+## Prerequisites <a name="prerequisites"></a>
+You should have at least some **basic knowledge about Linux and Docker**. Which [linux distro](https://en.wikipedia.org/wiki/List_of_Linux_distributions) you are using is not relevant. Use a linux distro of your choice! I'm using Ubuntu and openSUSE, which are basically totally different regarding package management: Ubuntu is Debian-based, openSUSE is RPM-based.
 
 <p>&nbsp;</p>
 
@@ -52,6 +58,7 @@ Now have a look at my Pi-hole(s):
 <p>&nbsp;</p>
 
 ## Why WireGuard? <a name="why-wireguard"></a>
+
 <img width="775" alt="image" src="https://user-images.githubusercontent.com/18568381/160894411-a0bbb699-adfa-4e4f-afa0-be1eecb3a79c.png">  
 WireGuard **tunnels all traffic from my mobile device(s) when leaving my home** to use my Pi-hole that isn't exposed on the internet because I **don't want to run a public DNS resolver** by forwarding ports from WAN interface to my computer where Pi-hole is running.  
 
