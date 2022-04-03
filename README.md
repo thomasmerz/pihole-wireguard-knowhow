@@ -191,7 +191,11 @@ I'm also blacklisting:
 I can also be used as a systemd-service on tty11 in addition to `pihole-live-output.service` on tty10 that can easily be implemented:
 
 **pihole-padd.service**  
+My cloudserver:  
 <img width="768" alt="image" src="https://user-images.githubusercontent.com/18568381/160881402-ddbc7588-1ed2-4a60-8043-81ca37c9221e.png">
+
+My desktop computer at home:  
+<img width="887" alt="image" src="https://user-images.githubusercontent.com/18568381/161450856-76e41be0-4130-4a7f-99b9-541185de3144.png">
 
 **pihole-live-output.service**  
 <img width="961" alt="image" src="https://user-images.githubusercontent.com/18568381/160881744-7235c698-b50a-462c-876b-62ace72e0505.png">
