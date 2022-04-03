@@ -164,12 +164,16 @@ I'm using only **static IP adresses** in my home-network because this is essenti
 
 ⚠️ Please refer to your router's documentation how to setup "static DHCP" addresses! ⚠️
 
-If you are experiencing **false positives for some domains**, you can open an issue at the blocklist owner's repository on GitHub - and you can (temporarilly) **whitelist** it in "Group Management" > "Domains". There you can also **blacklist** some domains or even top-level-domains with an regular expression.  
-I'm blacklisting `(\.cn$|\.ru$|\.su$|\.vn$|\.top$)` because currently I don't know a reason why to surf to these top-level-domains (despite I can't read mandarin, russian or vietnamese 😉). I'm also blacklisting:
-* `(^|\.)xn--.*$` which blocks all domains with german "Umlauten" like "äöü" because they're mostly used for phishing
-* `graph.facebook.com` for tracking by Facebook on non-facebook sites (none of my many blocklist does block this! but `graph.instagram.com` is already blocked by some blocklists. Check this out by `docker exec -it pihole pihole -q graph.instagram.com`). Some more details can be found [here](https://forum.kuketz-blog.de/viewtopic.php?t=552) in the german "Kuketz-Forum".
-* `(\.casino$|\.bet$|\.poker$)` because I don't like online-gambling
-* `(^|.+\.|.+)app-measurement\.com(.+|$)` is one of my absolute "top blocked domains". This domain is already in many blocklists, but due to some developer's error there are also many invalid queries for 'https://app-measurement.com/sdk-exp' which I want to block with this reg-ex. This domain is widely used by many, many smartphone apps because they use a shitty SDK and would be absolutely tracking-free by the developers of the app if they wouldn't use this SDK 😞
+If you are experiencing **false positives for some domains**,
+- you can **open an issue at the blocklist owner's repository** on GitHub/GitLab/…
+- and you can (temporarilly) **whitelist** it in "Group Management" > "Domains". There you can also **blacklist** some domains or even top-level-domains with an regular expression.  
+I'm blacklisting `(\.cn$|\.ru$|\.su$|\.vn$|\.top$)` because currently I don't know a reason why to surf to these top-level-domains (despite I can't read mandarin, russian or vietnamese 😉).  
+
+I'm also blacklisting:
+* `(^|\.)xn--.*$` which blocks all **punycode domains** because they're [often/mostly used for phishing](https://www.startpage.com/sp/search?q=malicious+punycode+lookalike+domains)
+* `graph.facebook.com` for **tracking by Facebook on non-facebook sites** (none of my many blocklist does block this! but `graph.instagram.com` is already blocked by some blocklists. Check this out by `docker exec -it pihole pihole -q graph.instagram.com`). Some more details can be found [here](https://forum.kuketz-blog.de/viewtopic.php?t=552) in the german "Kuketz-Forum".
+* `(\.casino$|\.bet$|\.poker$)` because I don't like **online-gambling**
+* `(^|.+\.|.+)app-measurement\.com(.+|$)` is one of my absolute "top blocked domains". This domain is already in many blocklists, but due to some developer's error there are also many invalid queries for 'https://app-measurement.com/sdk-exp' which I want to block with this reg-ex. This domain is **widely used by many, many smartphone apps because they use a shitty SDK** and would be absolutely tracking-free by the developers of the app if they wouldn't use this SDK 😞
 
 <p>&nbsp;</p>
 
