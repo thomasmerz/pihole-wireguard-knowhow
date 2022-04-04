@@ -23,12 +23,13 @@ Now have a look at my Pi-hole(s):
 2. [Why Pi-hole?](#why-pi-hole)
 3. [Why WireGuard?](#why-wireguard)
 4. [Setup and Installation](#setup-installation)
-5. [Blocklists and consolidation / deduplication](#blacklists)
-6. [General Infos regarding your Pi-hole and network setup](#general-infos)
-7. [Some tools for Pi-hole](#tools)
-8. [Tweaks](#tweaks)
-9. [Usage at home](#usage-at-home)
-10. [Usage in foreign networks ("free" WiFi / Hotspots and mobile data (4G/5G))](#usage-on-the-road)
+5. [Some words regarding choosing a DNS upstream resolver](#upstream-resolvers)
+6. [Blocklists and consolidation / deduplication](#blacklists)
+7. [General Infos regarding your Pi-hole and network setup](#general-infos)
+8. [Some tools for Pi-hole](#tools)
+9. [Tweaks](#tweaks)
+10. [Usage at home](#usage-at-home)
+11. [Usage in foreign networks ("free" WiFi / Hotspots and mobile data (4G/5G))](#usage-on-the-road)
 
 <p>&nbsp;</p>
 
@@ -94,7 +95,7 @@ Keep in mind to set **Permit all origins** in Web-GUI ("Settings" > "DNS") for y
 Keep in mind to set **Allow only local requests** for your **Pi-hole on your cloudserver** if you won't become a public DNS resolver! 💣  
 <img width="484" alt="image" src="https://user-images.githubusercontent.com/18568381/160889335-7da539ec-f4c9-4389-86e5-f965c7ab74ec.png">
 
-### Some words regarding choosing a DNS upstream resolver
+## Some words regarding choosing a DNS upstream resolver <a name="upstream-resolvers"></a>
 Remember why we choose running a local DNS resolver:  
 * to gain more **privacy**!
 * and potentielly or hopefully to **get DNS queries answered faster** than with the provider's DNS resolver ([Vodafone's DNS resolver is very lousy](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/examples/vodafone_cablemax_1000_karlsruhe/dnsping_80.69.96.12_month.png)) or some privacy-disrespecting DNS resolvers like the ones from Google (8.8.8.8 and 8.8.4.4).  
