@@ -268,7 +268,7 @@ Now you can switch to your tty10 and tty11 console to view Pi-hole's query log o
 
 Use this if you want to find out **which DNS resolver will be the fastest and most reliable for you**. I run it closest to a user experience via WiFi because most devices today are connected via WiFi and not via LAN. Think of smartphones and tablets! After some time (a day, a week; what you expect as "reliable") there's some data on a 5 minute base available and by interpreting the generated charts you should have more than just a clue which DNS resolvers from the ones you monitored are the fastest and most reliable for your internet connection at home 👍
 
-⚠️ Please have a look at the [README](https://github.com/thomasmerz/dnspingtest_rrd/README.md) to check and how to set up this nice tool for your needings. ⚠️
+⚠️ Please have a look at the [README](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/README.md) to check and how to set up this nice tool for your needings. ⚠️
 
 <p>&nbsp;</p>
 
