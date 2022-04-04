@@ -105,7 +105,7 @@ Go to "Settings" > "DNS" in Pi-hole's Web-GUI:
 * forget Quad9 - they have [severe performance issues](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/examples/vodafone_cablemax_1000_karlsruhe/dnsping_9.9.9.11_month.png) and [latency can be up to 1 sec (if there is a response at all](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/examples/vodafone_cablemax_1000_karlsruhe/dnsping_149.112.112.11_month.png))
 * only [DNS.WATCH](https://dns.watch/) remains - but they don't support [ECS](https://en.wikipedia.org/wiki/EDNS_Client_Subnet) which "allows better use of DNS-based load balancing to select a service address near the client" which speeds up many service for you by getting connected to a nearer target to you!
 * So, for me [nextDNS.io's](https://nextdns.io) DNS resolvers are working best regarding latency ([20ms for dns2.nextdns.io](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/examples/vodafone_cablemax_1000_karlsruhe/dnsping_45.90.30.39_month.png) and [40ms for dns1.nextdns.io](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/examples/vodafone_cablemax_1000_karlsruhe/dnsping_45.90.28.39_month.png))
-> 45.90.28.39 and 45.90.30.39 (IPv4)
+> 45.90.28.39 and 45.90.30.39 (IPv4)  
 > 2a07:a8c0::75:86b2 and 2a07:a8c1::75:86b2 (IPv6)
 
 If you're wondering why [raw performance](https://www.dnsperf.com/#%21dns-resolvers%2CEurope=) on dnsperf.com differ so much from my results and are "much better":  
@@ -115,11 +115,13 @@ If you're wondering why [raw performance](https://www.dnsperf.com/#%21dns-resolv
 
 My project is measuring very close to an end user via WiFi and via Vodafone ISP (coax/cable). So these results are what you also can expect on your home internet connection regardless which ISP (Telekom, Vodafone, 1-und-1, …) and which technology (DSL, Coax/Cable, Fiber or even mobile (4G/5G)).
 
-💡 You can check this out before installing Pi-hole with my little project [dnspingtest_rrd](https://github.com/thomasmerz/dnspingtest_rrd/) 
-For one-time-checks you could alse use:
+💡 You can check this out before installing Pi-hole with my little project [dnspingtest_rrd](https://github.com/thomasmerz/dnspingtest_rrd/). For one-time-checks you could also use:
 ```
 docker run --rm --name=dnstrace redsift/dnstrace --color -n 10 -c 10 --server 45.90.28.39 --recurse web.de
 ```
+
+<img width="550" alt="image" src="https://user-images.githubusercontent.com/18568381/161646518-181d1b13-6a59-4453-930f-d88b8c8a3825.png">
+("mean" is the relevant/interesting timing for you!)
 
 <p>&nbsp;</p>
 
