@@ -65,7 +65,7 @@ WireGuard **tunnels all traffic from my mobile device(s) when leaving my home** 
 💡  **Conclusion: WireGuard can save you from "too curious" ISPs at home, mobile providers or (free) VPN providers - but now you still have to trust your cloudserver provider! This is still not 100 percent safe from state authorities or from intelligence services!** 💡  
 This german [Howto](https://www.kuketz-blog.de/howto-internet-zensur-umgehen-und-anonym-bleiben/) about "Avoiding Internet-censorship and stay anonym" gives some interesting details and thoughts.
 
-Finally the **combination of Pi-hole and WireGuard** (also known as [WireHole](https://github.com/IAmStoxe/wirehole) - but I like both projects being separated for reasons of nicer and easier updates which I will explain later) gives you the **ability to access your private Pi-hole an all your devices at any place/network any time** 👍
+Finally the **combination of Pi-hole and WireGuard** (also known as [WireHole](https://github.com/IAmStoxe/wirehole) - but I like both projects being separated for reasons of nicer and easier updates which I will explain later) gives you the **ability to access your private Pi-hole on all your devices at any place/network any time** 👍
 
 ℹ️  More Information (in german only) can be found [here](https://www.rhoenwurz.de/digitalautonomy_2021/).
 
@@ -79,10 +79,11 @@ My motivation to run everything for this project in **[Docker](https://en.wikipe
 
 💡 I can really recommend Docker, because it's so super easy! 💡
 
-So I used https://github.com/pi-hole/docker-pi-hole and followed the "Quick Start" to install and start Pi-hole on my machines.  
-To get the advantages and the same "surf and shelter experience" when not being at home/in my home WiFi I thought about a VPN to my Pi-hole. Because I already had an Ubuntu LTS server running at [Hetzner](https://www.hetzner.com/) with an 1 Gbit/s connection instead of 50 Mbit/s Upload at home, I installed https://github.com/linuxserver/docker-wireguard and followed the "Usage" to install and start my personal WireGuard VPN server 😄  
+So I used https://github.com/pi-hole/docker-pi-hole and followed the "Quick Start" to install and start Pi-hole on my machines (at home and on my cloudserver).
 
-BTW: I use `docker-compose` and not native `docker` because I use it already for other projects (Nextcloud).
+To get the advantages and the same "surf and shelter experience" when not being at home/in my home WiFi I thought about a VPN to my Pi-hole. Because I already had an Ubuntu LTS server running at [Hetzner](https://www.hetzner.com/) with an 1 Gbit/s connection instead of 50 Mbit/s Upload at home, I installed https://github.com/linuxserver/docker-wireguard and followed the "Usage" to install and start my personal WireGuard VPN server 😄 There's a 20 TByte volume for outgoing traffic free of charge, which really should be enough for many WireGuard users and covering all current existing mobile plans (usually some GByte).
+
+BTW: I use `docker-compose` and not native `docker` because I use it already for other projects ([Nextcloud](https://en.wikipedia.org/wiki/Nextcloud)).
 
 ⚠️ I will not explain and repeat how to install a basic setup - please refer to the links above. ⚠️  
 ⚠️ Don't forget to change DNS resolver in your routers DHCP options - please refer to your router's documentation how to do this! ⚠️
@@ -92,6 +93,33 @@ Keep in mind to set **Permit all origins** in Web-GUI ("Settings" > "DNS") for y
 
 Keep in mind to set **Allow only local requests** for your **Pi-hole on your cloudserver** if you won't become a public DNS resolver! 💣  
 <img width="484" alt="image" src="https://user-images.githubusercontent.com/18568381/160889335-7da539ec-f4c9-4389-86e5-f965c7ab74ec.png">
+
+### Some words regarding choosing a DNS upstream resolver
+Remember why we choose running a local DNS resolver:  
+* to gain more **privacy**!
+* and potentielly or hopefully to **get DNS queries answered faster** than with the provider's DNS resolver ([Vodafone's DNS resolver is very lousy](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/examples/vodafone_cablemax_1000_karlsruhe/dnsping_80.69.96.12_month.png)) or some privacy-disrespecting DNS resolvers like the ones from Google (8.8.8.8 and 8.8.4.4).  
+
+Go to "Settings" > "DNS" in Pi-hole's Web-GUI:
+* unmark all without "[DNSSEC](https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions)"
+* forget Google, Cloudflare - they disrespect your privacy!
+* forget Quad9 - they have [severe performance issues](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/examples/vodafone_cablemax_1000_karlsruhe/dnsping_9.9.9.11_month.png) and [latency can be up to 1 sec (if there is a response at all](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/examples/vodafone_cablemax_1000_karlsruhe/dnsping_149.112.112.11_month.png))
+* only [DNS.WATCH](https://dns.watch/) remains - but they don't support [ECS](https://en.wikipedia.org/wiki/EDNS_Client_Subnet) which "allows better use of DNS-based load balancing to select a service address near the client" which speeds up many service for you by getting connected to a nearer target to you!
+* So, for me [nextDNS.io's](https://nextdns.io) DNS resolvers are working best regarding latency ([20ms for dns2.nextdns.io](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/examples/vodafone_cablemax_1000_karlsruhe/dnsping_45.90.30.39_month.png) and [40ms for dns1.nextdns.io](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/examples/vodafone_cablemax_1000_karlsruhe/dnsping_45.90.28.39_month.png))
+> 45.90.28.39 and 45.90.30.39 (IPv4)
+> 2a07:a8c0::75:86b2 and 2a07:a8c1::75:86b2 (IPv6)
+
+If you're wondering why [raw performance](https://www.dnsperf.com/#%21dns-resolvers%2CEurope=) on dnsperf.com differ so much from my results and are "much better":  
+"All DNS providers are tested every minute from 200+ locations around the world"
+* which means under optimal conditions
+* which means "datacenters" with high-speed-connectivity and low latency.
+
+My project is measuring very close to an end user via WiFi and via Vodafone ISP (coax/cable). So these results are what you also can expect on your home internet connection regardless which ISP (Telekom, Vodafone, 1-und-1, …) and which technology (DSL, Coax/Cable, Fiber or even mobile (4G/5G)).
+
+💡 You can check this out before installing Pi-hole with my little project [dnspingtest_rrd](https://github.com/thomasmerz/dnspingtest_rrd/) 
+For one-time-checks you could alse use:
+```
+docker run --rm --name=dnstrace redsift/dnstrace --color -n 10 -c 10 --server 45.90.28.39 --recurse web.de
+```
 
 <p>&nbsp;</p>
 
@@ -156,7 +184,7 @@ id  enabled  total_domains  domains_covered  hits_covered  unique_domains_covere
 Some infos about `dbl.oisd.nl`:
 
 > Contrary to it's name, FULL does NOT include NSFW
-The NSFW list can be used as stand-alone, or alongside basic or full
+The [NSFW](https://en.wikipedia.org/wiki/Not_safe_for_work) list can be used as stand-alone, or alongside basic or full
 >
 > What is the difference between the full and basic list? --> https://oisd.nl/faq#basic
 >
@@ -167,7 +195,9 @@ The NSFW list can be used as stand-alone, or alongside basic or full
 <p>&nbsp;</p>
 
 ## General Infos regarding your Pi-hole and network setup <a name="general-infos"></a>
-I'm using only **static IP adresses** in my home-network because this is essential for the **"Client group management"** (Web-GUI: "Group management" > "Clients"). After you have once identified your "known clients" by IP address or MAC addres you are now able to assign groups of blocklists to your clients. Assume you have an Adlist group "social" and don't want your kids to consume social media, then you might assign group "social" additional to "default" to your kids device(s).
+I'm using only **static IP adresses** in my home-network because this is essential for the **"Client group management"** (Web-GUI: "Group management" > "Clients"). It's essential to **turn off "private wifi address"** on iOS and the pendant on android. Otherwise you won't be able to identify your clients and you won't be able to use static IP addresses! ([IP addresses](https://en.wikipedia.org/wiki/IP_address) are easier to manage and to "remember" than [MAC addresses](https://en.wikipedia.org/wiki/MAC_address). As Apple writes on their [support site](https://support.apple.com/en-us/HT211227) "private Wi-Fi addresses (**can**) … improve privacy …". For "network administrator" Apple continues to write "use an MDM-defined network profile to turn off Private Address for enrolled devices that join their Wi-Fi network".
+
+After you have once identified your "known clients" by IP address or MAC addres you are now able to assign groups of blocklists to your clients. Assume you have an Adlist group "social" and don't want your kids to consume social media, then you might assign group "social" additional to "default" to your kids device(s).
 
 ⚠️ Please refer to your router's documentation how to setup "static DHCP" addresses! ⚠️
 
@@ -419,6 +449,9 @@ I'm running a daily cronjob to gather these stats with `padd.sh`:
 59 23 * * * echo -e $(date +\%Y-\%m-\%d) $(docker exec --tty pihole /etc/pihole/padd.sh -j) >> ~/logs/pihole-padd.log
 ```
 
+### Conclusion
+With these tweaks I'm usually getting a cache hit ratio of 50% (see screenshot on top of this page: "Upstream servers", the blue cake slice is "cached")) and more with a very low latency for most DNS queries with an [average of slightly below 20ms](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/examples/vodafone_cablemax_1000_karlsruhe/dnsping_192.168.0.13_week.png) (on a weekly basis and if there are no internet outages).
+
 <p>&nbsp;</p>
 
 ## Usage at home <a name="usage-at-home"></a>
@@ -445,8 +478,11 @@ docker exec -it wireguard /app/show-peer <peer-name>
 
 On your **mobile device** you can simply **scan this QR-code** and you're finished. Edit your config to enable "on-demand tunneling" for "mobile data" and all WiFi except your WiFi at home which is already protected by your Pi-hole at home.
 
-On your **computer** you have to cut and paste the following output into your WireGuard app:
+On your **computer** you have to copy and paste the following output from your WireGuard server into your WireGuard app:
 ```
-cat <path_to_your_wireguard_docker-compose.yaml>/etc-wireguard/peer_<peer-name>/peer_<peer_name>.conf
+docker exec -it wireguard cat /config/peer_<peer-name>/peer_<peer_name>.conf
 ```
+
+
+Have fun and stay safe! 💚
 
