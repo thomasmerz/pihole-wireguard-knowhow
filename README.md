@@ -30,6 +30,7 @@ Now have a look at my Pi-hole(s):
 9. [Tweaks](#tweaks)
 10. [Usage at home](#usage-at-home)
 11. [Usage in foreign networks ("free" WiFi / Hotspots and mobile data (4G/5G))](#usage-on-the-road)
+12. [Maintenance](#maintenance)
 
 <p>&nbsp;</p>
 
@@ -94,6 +95,8 @@ Keep in mind to set **Permit all origins** in Web-GUI ("Settings" > "DNS") for y
 
 Keep in mind to set **Allow only local requests** for your **Pi-hole on your cloudserver** if you won't become a public DNS resolver! 💣  
 <img width="484" alt="image" src="https://user-images.githubusercontent.com/18568381/160889335-7da539ec-f4c9-4389-86e5-f965c7ab74ec.png">
+
+<p>&nbsp;</p>
 
 ## Some words regarding choosing a DNS upstream resolver <a name="upstream-resolvers"></a>
 Remember why we choose running a local DNS resolver:  
@@ -486,6 +489,64 @@ On your **computer** you have to copy and paste the following output from your W
 docker exec -it wireguard cat /config/peer_<peer-name>/peer_<peer_name>.conf
 ```
 
+<p>&nbsp;</p>
 
+## Maintenance <a name="maintenance"></a>
+I use some **scripts for regular and automated updates**:
+### pi-hole-update.sh
+```
+#!/bin/bash
+
+cd ~/dev/docker-pi-hole && {
+  git stash; git pull; git stash pop -q
+  # https://github.com/docker/compose/issues/5960#issuecomment-390952779
+  docker-compose pull --no-parallel 2>&1 | grep "is up to date" || \
+    { docker-compose stop && docker-compose up -d; }
+}
+
+```
+
+### docker-wireguard-update.sh
+```
+#!/bin/bash
+
+docker pull ghcr.io/linuxserver/wireguard | grep "is up to date" || \
+{
+docker stop wireguard
+docker rm wireguard
+
+# https://github.com/linuxserver/docker-wireguard
+
+# peer names are only supported alphanumeric:
+# https://github.com/linuxserver/docker-wireguard/issues/135
+
+#  -e ALLOWEDIPS=192.168.1.0/24,192.168.2.0/24 `#optional` \
+docker run -d \
+  --name=wireguard \
+  --cap-add=NET_ADMIN \
+  --cap-add=SYS_MODULE \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=Europe/Berlin \
+  -e SERVERURL=wireguard.example.com\
+  -e SERVERPORT=12345 \
+  -e PEERS=1 `#optional` \
+  -e PEERDNS=auto `#optional` \
+  -e INTERNAL_SUBNET=10.13.13.0 `#optional` \
+  -p 51820:51820/udp \
+  -v ~/temp/etc-wireguard:/config \
+  -v /lib/modules:/lib/modules \
+  --sysctl="net.ipv4.conf.all.src_valid_mark=1" \
+  --restart unless-stopped \
+  ghcr.io/linuxserver/wireguard
+
+}
+```
+
+With these **cronjobs** for daily WireGuard updates and weekly Pi-hole updates:
+```
+10  5 * * * ~/bin/docker-wireguard-update.sh &> ~/logs/docker-wireguard-update.sh.log
+15  7 * * 1 ~/bin/pi-hole-update.sh &> ~/logs/pi-hole-update.sh.log
+```
 Have fun and stay safe! 💚
 
