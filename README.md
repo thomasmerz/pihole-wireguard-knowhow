@@ -533,7 +533,7 @@ docker run -d \
   -e PEERS=1 `#optional` \
   -e PEERDNS=auto `#optional` \
   -e INTERNAL_SUBNET=10.13.13.0 `#optional` \
-  -p 51820:51820/udp \
+  -p 12345:12345/udp \
   -v ~/temp/etc-wireguard:/config \
   -v /lib/modules:/lib/modules \
   --sysctl="net.ipv4.conf.all.src_valid_mark=1" \
