@@ -456,7 +456,7 @@ I'm running a daily cronjob to gather these stats with `padd.sh`:
 ```
 
 ### Conclusion
-With these tweaks I'm usually getting a cache hit ratio of 50% (see screenshot on top of this page: "Upstream servers", the blue cake slice is "cached")) and more with a very low latency for most DNS queries with an [average of slightly below 20ms](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/examples/vodafone_cablemax_1000_karlsruhe/dnsping_192.168.0.13_week.png) (on a weekly basis and if there are no internet outages).
+With these tweaks I'm usually getting a cache hit ratio of 50% (see [screenshot on top of this page](https://user-images.githubusercontent.com/18568381/160889683-5d2849e5-7ef5-4bef-9e87-e3a16affdb44.png): "Upstream servers", the blue cake slice is "cached")) and more with a very low latency for most DNS queries with an [average of slightly below 20ms](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/examples/vodafone_cablemax_1000_karlsruhe/dnsping_192.168.0.13_week.png) (on a weekly basis and if there are no internet outages).
 
 ### Force network-wide usage of SafeSearch (Google, Startpage.com):
 "This method leverages SafeSearch VIP to force all users on your network to use SafeSearch on Google Search while still allowing a secure connection via HTTPS. The VIP in SafeSearch VIP refers to a Virtual IP, which is an IP address that can be routed internally to multiple Google servers. We will serve SafeSearch results for all requests that we receive on this VIP, which includes Google search, image search, and video search.
