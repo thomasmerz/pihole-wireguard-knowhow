@@ -81,7 +81,7 @@ My motivation to run everything for this project in **[Docker](https://en.wikipe
 
 💡 I can really recommend Docker, because it's so super easy! 💡
 
-So I used https://github.com/pi-hole/docker-pi-hole and followed the "Quick Start" to install and start Pi-hole on my machines (at home and on my cloudserver).
+So I used [https://github.com/pi-hole/docker-pi-hole](https://github.com/pi-hole/docker-pi-hole) and followed the "Quick Start" to install and start Pi-hole on my machines (at home and on my cloudserver).
 
 To get the advantages and the same "surf and shelter experience" when not being at home/in my home WiFi I thought about a VPN to my Pi-hole. Because I already had an Ubuntu LTS server running at [Hetzner](https://www.hetzner.com/) with an 1 Gbit/s connection instead of 50 Mbit/s Upload at home, I installed https://github.com/linuxserver/docker-wireguard and followed the "Usage" to install and start my personal WireGuard VPN server 😄 There's a 20 TByte volume for outgoing traffic free of charge, which really should be enough for many WireGuard users and covering all current existing mobile plans (usually some GByte).
 
@@ -130,7 +130,7 @@ docker run --rm --name=dnstrace redsift/dnstrace --color -n 10 -c 10 --server 45
 <p>&nbsp;</p>
 
 ## Blocklists and consolidation / deduplication <a name="blacklists"></a>
-There's already at least one single blocklist shipped with Pi-hole: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts. But that didn't fit my needings (see "goals" above). So I constantly and repeatedly check and add/remove blocklists on an irregular base.  
+There's already at least one single blocklist shipped with Pi-hole: [https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts). But that didn't fit my needings (see "goals" above). So I constantly and repeatedly check and add/remove blocklists on an irregular base.  
 
 Currently I'm using these blocklist (Web-GUI: **"Group management"** > "Adlist" - you may want to assign a group to some blocklists to be able to block some domains only for some devices) in column "address" (this is an extract from real output from `pihole_adlist_tool` which I will introduce later). These list sum up to more than 4 mio domains/hosts. For better reading I rearranged the rows by groups:
 
