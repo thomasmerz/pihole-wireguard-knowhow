@@ -112,14 +112,14 @@ Go to "Settings" > "DNS" in Pi-hole's Web-GUI:
 > 45.90.28.39 and 45.90.30.39 (IPv4)  
 > 2a07:a8c0::75:86b2 and 2a07:a8c1::75:86b2 (IPv6)
 
-If you're wondering why [raw performance](https://www.dnsperf.com/#%21dns-resolvers%2CEurope=) on dnsperf.com differ so much from my results and are "much better":  
+If you're wondering why [raw performance](https://www.dnsperf.com/#%21dns-resolvers%2CEurope) on dnsperf.com differ so much from my results and are "much better":  
 "All DNS providers are tested every minute from 200+ locations around the world"
 * which means under optimal conditions
 * which means "datacenters" with high-speed-connectivity and low latency.
 
 My project is measuring very close to an end user via WiFi and via Vodafone ISP (coax/cable). So these results are what you also can expect on your home internet connection regardless which ISP (Telekom, Vodafone, 1-und-1, …) and which technology (DSL, Coax/Cable, Fiber or even mobile (4G/5G)).
 
-💡 You can check this out before installing Pi-hole with my little project [dnspingtest_rrd](https://github.com/thomasmerz/dnspingtest_rrd/). For one-time-checks you could also use:
+💡 You can check this out before installing Pi-hole with my little project [dnspingtest_rrd](https://github.com/thomasmerz/dnspingtest_rrd/).  You may have want to have a look at [real data from my home](https://github.com/thomasmerz/dnspingtest_rrd_ka). For one-time-checks you could also use:
 ```
 docker run --rm --name=dnstrace redsift/dnstrace --color -n 10 -c 10 --server 45.90.28.39 --recurse web.de
 ```
