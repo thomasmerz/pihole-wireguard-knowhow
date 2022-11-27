@@ -101,14 +101,14 @@ Keep in mind to set **Allow only local requests** for your **Pi-hole on your clo
 ## Some words regarding choosing a DNS upstream resolver <a name="upstream-resolvers"></a>
 Remember why we choose running a local DNS resolver:  
 * to gain more **privacy**!
-* and potentielly or hopefully to **get DNS queries answered faster** than with the provider's DNS resolver ([Vodafone's DNS resolver is very lousy](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/examples/vodafone_cablemax_1000_karlsruhe/dnsping_80.69.96.12_month.png)) or some privacy-disrespecting DNS resolvers like the ones from Google (8.8.8.8 and 8.8.4.4).  
+* and potentielly or hopefully to **get DNS queries answered faster** than with the provider's DNS resolver ([Vodafone's DNS resolver is very lousy](https://github.com/thomasmerz/dnspingtest_rrd_ka/blob/master/images/dnsping_80.69.96.12_month.png)) or some privacy-disrespecting DNS resolvers like the ones from Google (8.8.8.8 and 8.8.4.4).  
 
 Go to "Settings" > "DNS" in Pi-hole's Web-GUI:
 * unmark all without "[DNSSEC](https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions)"
 * forget Google, Cloudflare - they disrespect your privacy!
-* forget Quad9 - they have [severe performance issues](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/examples/vodafone_cablemax_1000_karlsruhe/dnsping_9.9.9.11_month.png) and [latency can be up to 1 sec (if there is a response at all](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/examples/vodafone_cablemax_1000_karlsruhe/dnsping_149.112.112.11_month.png))
+* forget Quad9 - they have [severe performance issues](https://github.com/thomasmerz/dnspingtest_rrd_ka/blob/master/images/dnsping_9.9.9.11_month.png) and [latency can be up to 1 sec (if there is a response at all](https://github.com/thomasmerz/dnspingtest_rrd_ka/blob/master/images/dnsping_149.112.112.11_month.png))
 * only [DNS.WATCH](https://dns.watch/) remains - but they don't support [ECS](https://en.wikipedia.org/wiki/EDNS_Client_Subnet) which "allows better use of DNS-based load balancing to select a service address near the client" which speeds up many service for you by getting connected to a nearer target to you!
-* So, for me [nextDNS.io's](https://nextdns.io) DNS resolvers are working best regarding latency ([20ms for dns2.nextdns.io](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/examples/vodafone_cablemax_1000_karlsruhe/dnsping_45.90.30.39_month.png) and [40ms for dns1.nextdns.io](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/examples/vodafone_cablemax_1000_karlsruhe/dnsping_45.90.28.39_month.png))
+* So, for me [nextDNS.io's](https://nextdns.io) DNS resolvers are working best regarding latency ([20ms for dns2.nextdns.io](https://github.com/thomasmerz/dnspingtest_rrd_ka/blob/master/images/dnsping_45.90.30.39_month.png) and [40ms for dns1.nextdns.io](https://github.com/thomasmerz/dnspingtest_rrd_ka/blob/master/images/dnsping_45.90.28.39_month.png))
 > 45.90.28.39 and 45.90.30.39 (IPv4)  
 > 2a07:a8c0::75:86b2 and 2a07:a8c1::75:86b2 (IPv6)  
 * But also [AdGuard](https://adguard.com/en/blog/adguard-dns-new-addresses.html) is doing a great job with their pre-filtering DNS resolvers. Since monitoring "filtering" and "non-filtering" DNS resolvers and adding the "filtering" ones them to my Pi-hole's `setupVars.conf` they beat nextDNS.io from scratch/within a week in a head-to-head race: [20ms for dns1.adguard.com](https://github.com/thomasmerz/dnspingtest_rrd_ka/blob/master/images/dnsping_94.140.14.14_week.png) and [20ms for dns2.adguard.com](https://github.com/thomasmerz/dnspingtest_rrd_ka/blob/master/images/dnsping_94.140.15.15_week.png):  
@@ -461,7 +461,7 @@ I'm running a daily cronjob to gather these stats with `padd.sh`:
 ```
 
 ### Conclusion
-With these tweaks I'm usually getting a cache hit ratio of 50% (see [screenshot on top of this page](https://user-images.githubusercontent.com/18568381/160889683-5d2849e5-7ef5-4bef-9e87-e3a16affdb44.png): "Upstream servers", the blue cake slice is "cached")) and more with a very low latency for most DNS queries with an [average of slightly below 20ms](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/examples/vodafone_cablemax_1000_karlsruhe/dnsping_192.168.0.13_week.png) (on a weekly basis and if there are no internet outages).
+With these tweaks I'm usually getting a cache hit ratio of 50% (see [screenshot on top of this page](https://user-images.githubusercontent.com/18568381/160889683-5d2849e5-7ef5-4bef-9e87-e3a16affdb44.png): "Upstream servers", the blue cake slice is "cached")) and more with a very low latency for most DNS queries with an [average of slightly below 20ms](https://github.com/thomasmerz/dnspingtest_rrd_ka/blob/master/images/dnsping_192.168.0.13_week.png) (on a weekly basis and if there are no internet outages).
 
 ### Force network-wide usage of SafeSearch (Google, Startpage.com):
 "This method leverages SafeSearch VIP to force all users on your network to use SafeSearch on Google Search while still allowing a secure connection via HTTPS. The VIP in SafeSearch VIP refers to a Virtual IP, which is an IP address that can be routed internally to multiple Google servers. We will serve SafeSearch results for all requests that we receive on this VIP, which includes Google search, image search, and video search.
