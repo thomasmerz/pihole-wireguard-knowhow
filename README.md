@@ -112,7 +112,9 @@ Go to "Settings" > "DNS" in Pi-hole's Web-GUI:
 > 45.90.28.39 and 45.90.30.39 (IPv4)  
 > 2a07:a8c0::75:86b2 and 2a07:a8c1::75:86b2 (IPv6)  
 * But also [AdGuard](https://adguard.com/en/blog/adguard-dns-new-addresses.html) is doing a great job with their pre-filtering DNS resolvers. Since monitoring "filtering" and "non-filtering" DNS resolvers and adding the "filtering" ones them to my Pi-hole's `setupVars.conf` they beat nextDNS.io from scratch/within a week in a head-to-head race: [20ms for dns1.adguard.com](https://github.com/thomasmerz/dnspingtest_rrd_ka/blob/master/images/dnsping_94.140.14.14_week.png) and [20ms for dns2.adguard.com](https://github.com/thomasmerz/dnspingtest_rrd_ka/blob/master/images/dnsping_94.140.15.15_week.png):  
-> 94.140.14.14 and 94.140.15.15 (IPv4)
+<img width="491" alt="image" src="https://user-images.githubusercontent.com/18568381/204162021-cdeb55ce-35cc-4a86-a64f-9e06bfb60a60.png">
+
+> 94.140.14.14 and 94.140.15.15 (IPv4)  
 > 2a10:50c0::ad1:ff and 2a10:50c0::ad2:ff (IPv6)
 
 If you're wondering why [raw performance](https://www.dnsperf.com/#%21dns-resolvers%2CEurope) on dnsperf.com differ so much from my results and are "much better":  
