@@ -24,7 +24,7 @@ Now have a look at my Pi-hole(s):
 3. [Why WireGuard?](#why-wireguard)
 4. [Setup and Installation](#setup-installation)
 5. [Some words regarding choosing a DNS upstream resolver](#upstream-resolvers)
-6. [Blocklists and consolidation / deduplication](#blacklists)
+6. [Blocklists and consolidation / deduplication](#blocklists)
 7. [General Infos regarding your Pi-hole and network setup](#general-infos)
 8. [Some tools for Pi-hole](#tools)
 9. [Tweaks](#tweaks)
@@ -134,7 +134,7 @@ docker run --rm --name=dnstrace redsift/dnstrace --color -n 10 -c 10 --server 45
 
 <p>&nbsp;</p>
 
-## Blocklists and consolidation / deduplication <a name="blacklists"></a>
+## Blocklists and consolidation / deduplication <a name="blocklists"></a>
 There's already at least one single blocklist shipped with Pi-hole: [https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts). But that didn't fit my needings (see "goals" above). So I constantly and repeatedly check and add/remove blocklists on an irregular base.  
 
 Currently I'm using these blocklist (Web-GUI: **"Group management"** > "Adlist" - you may want to assign a group to some blocklists to be able to block some domains only for some devices) in column "address" (this is an extract from real output from `pihole_adlist_tool` which I will introduce later). These list sum up to more than 4 mio domains/hosts. For better reading I rearranged the rows by groups:
@@ -220,10 +220,10 @@ After you have once identified your "known clients" by IP address or MAC addres 
 
 If you are experiencing **false positives for some domains**,
 - you can **open an issue at the blocklist owner's repository** on GitHub/GitLab/…
-- and you can (temporarilly) **whitelist** it in "Group Management" > "Domains". There you can also **blacklist** some domains or even top-level-domains with an regular expression.  
-I'm blacklisting `(\.cn$|\.ru$|\.su$|\.vn$|\.top$)` because currently I don't know a reason why to surf to these top-level-domains (despite I can't read mandarin, russian or vietnamese 😉).  
+- and you can (temporarilly) **whitelist** it in "Group Management" > "Domains". There you can also **blocklist** some domains or even top-level-domains with an regular expression.  
+I'm blocklisting `(\.cn$|\.ru$|\.su$|\.vn$|\.top$)` because currently I don't know a reason why to surf to these top-level-domains (despite I can't read mandarin, russian or vietnamese 😉).  
 
-I'm also blacklisting:
+I'm also blocking:
 * `(^|\.)xn--.*$` which blocks all **punycode domains** because they're [often/mostly used for phishing](https://www.startpage.com/sp/search?q=malicious+punycode+lookalike+domains)
 * `graph.facebook.com` for **tracking by Facebook on non-facebook sites** (none of my many blocklist does block this! but `graph.instagram.com` is already blocked by some blocklists. Check this out by `docker exec -it pihole pihole -q graph.instagram.com`). Some more details can be found [here](https://forum.kuketz-blog.de/viewtopic.php?t=552) in the german "Kuketz-Forum".
 * `(\.casino$|\.bet$|\.poker$)` because I don't like **online-gambling**
