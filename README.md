@@ -141,58 +141,64 @@ Currently I'm using these blocklist (Web-GUI: **"Group management"** > "Adlist" 
 
 ```
 id  enabled  total_domains  domains_covered  hits_covered  unique_domains_covered  address
---  -------  -------------  ---------------  ------------  ----------------------  -------------------------------------------------------------------------------------------------------
+--  -------  -------------  ---------------  ------------  ----------------------  --------------------------------------------------------------------------------------------------------
 # default
-1   1        132576         1304             154496        25                      https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+1   1        189924         1253             125255        105                     https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 
 # additional blocklists:
-11  1        10362          236              40188                                 https://someonewhocares.org/hosts/zero/hosts
-13  1        2197           1                10                                    https://raw.githubusercontent.com/StevenBlack/hosts/master/extensions/fakenews/hosts
-19  1        23789          89               12608                                 https://raw.githubusercontent.com/blocklistproject/Lists/master/crypto.txt
-20  1        26588          1                10                                    https://raw.githubusercontent.com/blocklistproject/Lists/master/drugs.txt
-21  1        196092         4                32            3                       https://raw.githubusercontent.com/blocklistproject/Lists/master/fraud.txt
-23  1        190245         5                29            2                       https://raw.githubusercontent.com/blocklistproject/Lists/master/phishing.txt
-27  1        2479                                                                  https://raw.githubusercontent.com/blocklistproject/Lists/master/gambling.txt
-74  1        2520                                                                  https://raw.githubusercontent.com/Sinfonietta/hostfiles/master/gambling-hosts
-28  1        2128           4                34            2                       https://raw.githubusercontent.com/blocklistproject/Lists/master/piracy.txt
-33  1        4187           2                10            2                       https://raw.githubusercontent.com/RPiList/specials/master/Blocklisten/Streaming
-34  1        513926         22               1132          13                      https://raw.githubusercontent.com/RPiList/specials/master/Blocklisten/Phishing-Angriffe
-35  1        266513                                                                https://zerodot1.gitlab.io/CoinBlockerLists/hosts
-36  1        1393759        2098             252877        431                     https://dbl.oisd.nl/
-37  1        347735                                                                https://raw.githubusercontent.com/RPiList/specials/master/Blocklisten/Corona-Blocklist
-43  1        559454         189              4507          25                      https://raw.githubusercontent.com/RPiList/specials/master/Blocklisten/malware
-60  1        378            34               46103         2                       https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy_v6.txt
-62  1        1647           1                10                                    https://raw.githubusercontent.com/lightswitch05/hosts/master/docs/lists/hate-and-junk-extended.txt
-63  1        411328         1795             286428        329                     https://raw.githubusercontent.com/lightswitch05/hosts/master/docs/lists/ads-and-tracking-extended.txt
-64  1        106722         94               10496         56                      https://raw.githubusercontent.com/lightswitch05/hosts/master/docs/lists/tracking-aggressive-extended.txt
+11  0        11395          262              46693                                 https://someonewhocares.org/hosts/zero/hosts
+13  1        2196                                                                  https://raw.githubusercontent.com/StevenBlack/hosts/master/extensions/fakenews/hosts
+19  1        23782          102              19612         1                       https://raw.githubusercontent.com/blocklistproject/Lists/master/crypto.txt
+20  1        26562          1                1             1                       https://raw.githubusercontent.com/blocklistproject/Lists/master/drugs.txt
+21  1        196085         6                64            4                       https://raw.githubusercontent.com/blocklistproject/Lists/master/fraud.txt
+23  1        190229         5                70            5                       https://raw.githubusercontent.com/blocklistproject/Lists/master/phishing.txt
+27  1        2499           3                23            1                       https://raw.githubusercontent.com/blocklistproject/Lists/master/gambling.txt
+28  1        2134           6                70            6                       https://raw.githubusercontent.com/blocklistproject/Lists/master/piracy.txt
+33  1        4185           3                90            3                       https://raw.githubusercontent.com/RPiList/specials/master/Blocklisten/Streaming
+34  1        476667         11               3502          4                       https://raw.githubusercontent.com/RPiList/specials/master/Blocklisten/Phishing-Angriffe
+35  1        283757                                                                https://zerodot1.gitlab.io/CoinBlockerLists/hosts
+37  1        441936                                                                https://raw.githubusercontent.com/RPiList/specials/master/Blocklisten/Corona-Blocklist
+43  1        91462          70               1209          5                       https://raw.githubusercontent.com/RPiList/specials/master/Blocklisten/malware
+59  1        347            13               868                                   https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy.txt
+60  1        347            13               868                                   https://raw.githubusercontent.com/crazy-max/WindowsSpyBlocker/master/data/hosts/spy_v6.txt
+62  1        1679                                                                  https://raw.githubusercontent.com/lightswitch05/hosts/master/docs/lists/hate-and-junk-extended.txt
+63  1        431080         1516             142449        451                     https://raw.githubusercontent.com/lightswitch05/hosts/master/docs/lists/ads-and-tracking-extended.txt
+64  1        171731         86               15259         53                      https://raw.githubusercontent.com/lightswitch05/hosts/master/docs/lists/tracking-aggressive-extended.txt
+67  1        539365         41               14947         13                      https://raw.githubusercontent.com/RPiList/specials/master/Blocklisten/spam.mails
+74  1        2571           2                13                                    https://raw.githubusercontent.com/Sinfonietta/hostfiles/master/gambling-hosts
+82  0        201416                                                                https://raw.githubusercontent.com/notracking/hosts-blocklists/master/hostnames.txt
+84  1        916            47               4657          20                      https://raw.githubusercontent.com/liamengland1/mischosts/master/microsoft-telemetry
+86  0        2325                                                                  https://hosts.tweedge.net/malicious.txt
+87  1        3757           263              14157         6                       https://pgl.yoyo.org/as/serverlist.php?showintro=0;hostformat=hosts
+89  1        291106                                                                https://big.oisd.nl/
 
-# tracking on tiktok:
-66  1        184            13               30454         5                       https://raw.githubusercontent.com/llacb47/mischosts/master/tiktok-hosts
+# adult and NSFW:
+42  1        414048         790              57435         211                     https://raw.githubusercontent.com/RPiList/specials/master/Blocklisten/child-protection
+71  1        23                                                                    https://raw.githubusercontent.com/Sinfonietta/hostfiles/master/snuff-hosts
+72  1        19670          36               429           8                       https://raw.githubusercontent.com/Sinfonietta/hostfiles/master/pornography-hosts
+73  1        369                                                                   https://raw.githubusercontent.com/tiuxo/hosts/master/porn
+77  1        30786          52               473           13                      https://raw.githubusercontent.com/StevenBlack/hosts/master/extensions/porn/clefspeare13/hosts
+80  1        56711          23               240           6                       https://mypdns.org/my-privacy-dns/matrix/-/raw/master/source/porn_filters/explicit_content/hosts.list
+81  1        5629           3                8             1                       https://mypdns.org/my-privacy-dns/matrix/-/raw/master/source/porn_filters/explicit_content/domains.list
+88  1        341009                                                                https://nsfw.oisd.nl
 
 # tracking on mobiles:
-30  1        767            115              64741         3                       https://raw.githubusercontent.com/d43m0nhLInt3r/socialblocklists/master/MobileAppAds/appadsblocklist.txt
-61  1        234            79               142884        59                      https://raw.githubusercontent.com/llacb47/mischosts/master/apple-telemetry
-67  1        3196                                                                  https://raw.githubusercontent.com/RPiList/specials/master/Blocklisten/spam.mails
-68  1        80             35               34158                                 https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/android-tracking.txt
+30  1        767            173              66383         12                      https://raw.githubusercontent.com/d43m0nhLInt3r/socialblocklists/master/MobileAppAds/appadsblocklist.txt
+68  1        80             32               40481                                 https://raw.githubusercontent.com/Perflyst/PiHoleBlocklist/master/android-tracking.txt
+83  1        234            66               223348        55                      https://raw.githubusercontent.com/liamengland1/mischosts/master/apple-telemetry
+
+# smart TVs:
+5   0        209                                                                   https://raw.githubusercontent.com/d43m0nhLInt3r/socialblocklists/master/SmartTV/smarttvblocklist.txt
+32  1        20             5                264           4                       https://www.technoy.de/lists/FireTVAds.txt
 
 # tracking in minecraft:
 69  1        6                                                                     https://raw.githubusercontent.com/StevenBlack/hosts/master/data/minecraft-hosts/hosts
 
-# smart TVs:
-5   0        209                                                                   https://raw.githubusercontent.com/d43m0nhLInt3r/socialblocklists/master/SmartTV/smarttvblocklist.txt
-32  1        20             2                281           2                       https://www.technoy.de/lists/FireTVAds.txt
-
-# adult and NSFW:
-65  1        447373         45               303           11                      https://dbl.oisd.nl/nsfw/
-42  1        353134         616              56978         43                      https://raw.githubusercontent.com/RPiList/specials/master/Blocklisten/child-protection
-70  1        243179         131              10574         82                      https://mypdns.org/clefspeare13/pornhosts/-/raw/master/download_here/0.0.0.0/porn_strict.txt
-71  1        23             13               29                                    https://raw.githubusercontent.com/Sinfonietta/hostfiles/master/snuff-hosts
-72  1        17984          20               130                                   https://raw.githubusercontent.com/Sinfonietta/hostfiles/master/pornography-hosts
-73  1        369                                                                   https://raw.githubusercontent.com/tiuxo/hosts/master/porn
-
+# tracking on tiktok:
+85  1        184            6                13029         2                       https://raw.githubusercontent.com/liamengland1/mischosts/master/tiktok-hosts
 ```
 
-Some infos about `dbl.oisd.nl`:
+Some infos about `big.oisd.nl`:
 
 > Contrary to it's name, FULL does NOT include NSFW
 The [NSFW](https://en.wikipedia.org/wiki/Not_safe_for_work) list can be used as stand-alone, or alongside basic or full
