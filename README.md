@@ -325,16 +325,18 @@ If you find your "top" lists on the dashboard of the Web-GUI not suitable for th
 
 ```
 *.aaplimg.com
+*.amazonaws.com
 *.akadns.net
 *.akamai.net
 *.akamaiedge.net
-*.amazonaws.com
 *.apple-dns.net
 *.apple.com
 *.atomile.com
 *.azure.com
 *.cdn77.org
 *.cloudapp.net
+*.cloudfront.net
+*.dm-drogeriemarkt.com
 *.docker.com
 *.docker.io
 *.dropbox.com
@@ -349,8 +351,10 @@ If you find your "top" lists on the dashboard of the Web-GUI not suitable for th
 *.in-addr.arpa
 *.ip6.arpa
 *.localdomain
+*.mooo.com
 *.ms-acdc.office.com
 *.msedge.net
+*.nanoleaf.me
 *.office365.com
 *.pipe.aria.microsoft.com
 *.push.apple.com
@@ -362,10 +366,8 @@ If you find your "top" lists on the dashboard of the Web-GUI not suitable for th
 *.syncthing.net
 *.teams-msgapi.trafficmanager.net
 api.mobile.immobilienscout24.de
-apple-finance.query.yahoo.com
 apple.com
-arpa
-com
+apple-finance.query.yahoo.com
 de
 detectportal.firefox.com
 dmdrogeriemarkt.jamfcloud.com
@@ -378,16 +380,18 @@ gitlab.com
 hc-ping.com
 imap.strato.de
 internetcheck.fing.com
-io
 ipv4only.arpa
 mugshot0.assets-yammer.com
-net
 org
 push.services.mozilla.com
 receiver.yamalytics.yammer.com
 safebrowsing.googleapis.com
 www.comdirect.de
 www.yammer.com
+com
+io
+net
+arpa
 ```
 
 And `pi.hole` itself does a lot of DNS queries as a client with types [DS and DNSKEY](https://en.wikipedia.org/wiki/List_of_DNS_record_types) which are technically absolutely neccessary for [DNSSEC](https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions); but this information (how much queries) is absolutely worthless for me 😜
