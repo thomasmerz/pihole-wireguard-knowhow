@@ -107,7 +107,7 @@ Go to "Settings" > "DNS" in Pi-hole's Web-GUI:
 * unmark all without "[DNSSEC](https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions)"
 * forget Google, Cloudflare - they disrespect your privacy!
 * forget Quad9 - they have [severe performance issues](https://github.com/thomasmerz/dnspingtest_rrd_ka/blob/master/images/dnsping_9.9.9.11_month.png) and [latency can be up to 1 sec (if there is a response at all](https://github.com/thomasmerz/dnspingtest_rrd_ka/blob/master/images/dnsping_149.112.112.11_month.png))
-* only [DNS.WATCH](https://dns.watch/) remains - but they don't support [ECS](https://en.wikipedia.org/wiki/EDNS_Client_Subnet) which "allows better use of DNS-based load balancing to select a service address near the client" which speeds up many service for you by getting connected to a nearer target to you!
+* only [DNS.WATCH](https://dns.watch/) remains - but they don't support [ECS](https://en.wikipedia.org/wiki/EDNS_Client_Subnet) which "allows better use of DNS-based load balancing to select a service address near the client" which speeds up many service for you by getting connected to a nearer target to you! And they also have a much more [severe performance issues](https://github.com/thomasmerz/dnspingtest_rrd_ka/blob/master/images/dnsping_84.200.69.80_month.png) than Quad9!
 * So, for me [nextDNS.io's](https://nextdns.io) DNS resolvers are working best regarding latency ([20ms for dns2.nextdns.io](https://github.com/thomasmerz/dnspingtest_rrd_ka/blob/master/images/dnsping_45.90.30.39_month.png) and [40ms for dns1.nextdns.io](https://github.com/thomasmerz/dnspingtest_rrd_ka/blob/master/images/dnsping_45.90.28.39_month.png))
 > 45.90.28.39 and 45.90.30.39 (IPv4)  
 > 2a07:a8c0::75:86b2 and 2a07:a8c1::75:86b2 (IPv6)  
