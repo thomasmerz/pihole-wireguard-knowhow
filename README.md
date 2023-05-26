@@ -327,6 +327,8 @@ Use this if you want to find out **which DNS resolver will be the fastest and mo
 
 ⚠️ Please have a look at the [README](https://github.com/thomasmerz/dnspingtest_rrd/blob/main/README.md) to check and how to set up this nice tool for your needings. ⚠️
 
+You might be also interested in my DNS-Ping Monitoring with **real data** from [my home](https://thomasmerz.github.io/dnspingtest_rrd_ka/) or my cloudservers at Hetzner: [Nuremberg, Germany](https://thomasmerz.github.io/dnspingtest_rrd_nbg/), [Falkenstein, Germany](https://thomasmerz.github.io/dnspingtest_rrd_fsn/) and [Helsinki, Finnland](https://thomasmerz.github.io/dnspingtest_rrd_hel/).
+
 <p>&nbsp;</p>
 
 ## Tweaks <a name="tweaks"></a>
