@@ -1,5 +1,5 @@
 <sup>This project is suitable for:</sup>
-[![Linux](https://img.shields.io/badge/^C-Linux-blue)](https://en.wikipedia.org/wiki/Linux)
+[![Linux](https://img.shields.io/badge/os-Linux-blue)](https://en.wikipedia.org/wiki/Linux)
 <sup>+</sup>
 [![macOS](https://img.shields.io/badge/os-macOS-blue)](https://en.wikipedia.org/wiki/MacOS)
 <sup>and has been</sup>
