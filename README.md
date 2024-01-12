@@ -1,7 +1,7 @@
 <sup>This project is suitable for:</sup>
-[![Linux](https://svgshare.com/i/Zhy.svg)](https://en.wikipedia.org/wiki/Linux)
+[![Linux](https://img.shields.io/badge/^C-Linux-blue)](https://en.wikipedia.org/wiki/Linux)
 <sup>+</sup>
-[![macOS](https://svgshare.com/i/ZjP.svg)](https://en.wikipedia.org/wiki/MacOS)
+[![macOS](https://img.shields.io/badge/os-macOS-blue)](https://en.wikipedia.org/wiki/MacOS)
 <sup>and has been</sup>
 [![made-with-bash](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)](https://www.gnu.org/software/bash/)
 <sup>+</sup>
