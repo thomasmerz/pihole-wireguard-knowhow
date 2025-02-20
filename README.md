@@ -409,6 +409,8 @@ arpa
 And `pi.hole` itself does a lot of DNS queries as a client with types [DS and DNSKEY](https://en.wikipedia.org/wiki/List_of_DNS_record_types) which are technically absolutely neccessary for [DNSSEC](https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions); but this information (how much queries) is absolutely worthless for me 😜
 
 ### Keep database "small" / disable DoH and Apple's iCloud Private Relay / reduce queries
+⚠️ With V6 of Pi-hole "the configuration file can be found at /etc/pihole/pihole.toml, all of the options are documented within this file."
+
 I've added these lines in my `etc-pihole/pihole-FTL.conf`. Read the comments/links to understand:
 ```
 # https://docs.pi-hole.net/ftldns/configfile/
