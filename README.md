@@ -20,7 +20,8 @@ You would rightly be disappointed if I wouldn't show you my **hacks and tweaks w
 
 Now have a look at my Pi-hole(s):  
 
-<img width="978" alt="image" src="https://user-images.githubusercontent.com/18568381/160889683-5d2849e5-7ef5-4bef-9e87-e3a16affdb44.png">
+<img width="826" alt="image" src="https://github.com/user-attachments/assets/07d3921d-01a9-4cf8-95dd-ad5b42057cd2" />
+
 
 <p>&nbsp;</p>
 
