@@ -334,7 +334,7 @@ You might be also interested in my DNS-Ping Monitoring with **real data** from [
 
 ## Tweaks <a name="tweaks"></a>
 ### Reduce top lists from useless information
-If you find your "top" lists on the dashboard of the Web-GUI not suitable for the information you really need, you might exclude some **top domains / top adverters** and/or **top clients** in "Settings" > "API / Web Interface". For example I exclude these domains because they are much to generic or are queried very, very often by my linux machine's cronjobs and therefore useless to know:
+If you find your "top" lists on the dashboard of the Web-GUI not suitable for the information you really need, you might exclude some **top domains / top adverters** and/or **top clients** in "Settings" > "API / Web Interface" (you need to turn 'basic' to 'expert'). For example I exclude these domains because they are much to generic or are queried very, very often by my linux machine's cronjobs and therefore useless to know:
 
 ```
 *.aaplimg.com
