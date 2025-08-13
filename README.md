@@ -114,6 +114,15 @@ Remember why we choose running a local DNS resolver:
 * to gain more **privacy**!
 * and potentielly or hopefully to **get DNS queries answered faster** than with the provider's DNS resolver ([Vodafone's DNS resolver is very lousy](https://github.com/thomasmerz/dnspingtest_rrd_ka/blob/master/images/dnsping_80.69.96.12_month.png)) or some privacy-disrespecting DNS resolvers like the ones from Google (8.8.8.8 and 8.8.4.4).  
 
+### Some words if you're a Vodafone Mobil Customer with Wifi-Calling ("WLAN-Anrufe") ⚠️
+There's some important information for [Vodafone WiFi Calling in Germany for admins](https://stcl.blog/posts/vodafone_wifi-calling/#destination-ips):
+```
+Currently Vodafone Germany allows WiFi Calling for their German customers only from Germany, but they do not check the phone’s public IP to decide where it comes from. Instead they use the IP address the DNS query comes from.
+```
+TL;DR:  
+- Don't use Google-DNS!
+- It uses [ECS](https://en.wikipedia.org/wiki/EDNS_Client_Subnet) which may and potentially will break Wifi Calling! ⚠️
+
 Go to "Settings" > "DNS" in Pi-hole's Web-GUI:
 * unmark all without "[DNSSEC](https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions)"
 * forget Google, Cloudflare - they disrespect your privacy!
