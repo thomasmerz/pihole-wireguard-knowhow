@@ -117,7 +117,9 @@ Remember why we choose running a local DNS resolver:
 ### Some words if you're a Vodafone Mobil Customer with Wifi-Calling ("WLAN-Anrufe") ⚠️
 There's some important information for [Vodafone WiFi Calling in Germany for admins](https://stcl.blog/posts/vodafone_wifi-calling/#destination-ips):
 ```
-Currently Vodafone Germany allows WiFi Calling for their German customers only from Germany, but they do not check the phone’s public IP to decide where it comes from. Instead they use the IP address the DNS query comes from.
+Currently Vodafone Germany allows WiFi Calling for their German customers only from Germany,
+but they do not check the phone’s public IP to decide where it comes from.
+Instead they use the IP address the DNS query comes from.
 ```
 TL;DR:  
 - Don't use Google-DNS!
