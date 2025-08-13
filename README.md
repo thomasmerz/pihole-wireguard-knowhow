@@ -121,10 +121,11 @@ Currently Vodafone Germany allows WiFi Calling for their German customers only f
 but they do not check the phone’s public IP to decide where it comes from.
 Instead they use the IP address the DNS query comes from.
 ```
-TL;DR:  
+### TL;DR:  
 - Don't use Google-DNS!
 - It uses [ECS](https://en.wikipedia.org/wiki/EDNS_Client_Subnet) which may and potentially will break Wifi Calling! ⚠️
 
+### What to to in Pi-hole WebGUI
 Go to "Settings" > "DNS" in Pi-hole's Web-GUI:
 * unmark all without "[DNSSEC](https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions)"
 * forget Google, Cloudflare - they disrespect your privacy!
